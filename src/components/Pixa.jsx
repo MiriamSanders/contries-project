@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import PixaInput from './PixaInput';
 import PixaItem from './PixaItem';
+import persistToLocalStoragePixa from './service/cacheData';
 
 function Pixa() {
   const [infoItem, setInfoItem] = useState([]);
@@ -18,8 +19,8 @@ function Pixa() {
     console.log(url);
 
     try {
-      let resp = await axios.get(url);
-      console.log(resp.data);
+      let resp =await persistToLocalStoragePixa(query,url);
+      console.log(resp);
       setInfoItem(resp.data.hits);
     } catch (err) {
       console.log(err);

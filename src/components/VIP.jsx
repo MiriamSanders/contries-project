@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import fetchData from "./service/service";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function VIP() {
@@ -8,7 +9,7 @@ export default function VIP() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let resp = await axios.get("https://expressrichpepole.onrender.com/");
+        let resp = await fetchData("https://expressrichpepole.onrender.com/");
         setPeople(resp.data);
         console.log(resp.data);
         

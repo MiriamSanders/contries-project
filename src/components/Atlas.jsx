@@ -4,6 +4,7 @@ import axios from 'axios';
 import AtlasInput from './AtlasInput';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import fetchData from './service/service';
 function Atlas() {
     const [infoItem, setInfoItem] = useState({});
 
@@ -15,7 +16,7 @@ function Atlas() {
         setInfoItem({});
         let url = 'https://restcountries.com/v3.1/name/' + country;
         try {
-            let resp = await axios.get(url);
+            let resp =await fetchData(url);
             console.log(resp.data);
             setInfoItem(resp.data[0]);
         }
